@@ -12,6 +12,7 @@ import { IGameUpdate } from "../games/iGameUpdate";
 
 @WebSocketGateway(3008,{ transports: ['websocket'], cors: true })
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit {
+  @WebSocketServer() private server;
   private clientList = [];
 
   constructor(private gamesService: GamesService) { }
@@ -47,9 +48,6 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect, OnG
     setInterval(doGameEndEvents, 500);
     setInterval(doGameEvents, 500);
   }
-
-
-  @WebSocketServer() server;
 
   /**
    * entry point for socket connection

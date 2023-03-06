@@ -39,8 +39,6 @@ export class GamesService {
     for (let gameId of this.gameIds) {
       this.games.push(new Game(gameId, Game.getRandomTeamAbbr(), Game.getRandomTeamAbbr(), Game.getRandomStartTime()));
     }
-
-    console.log(this.games);
   }
 
   public removeGame(game: Game): void {
@@ -55,7 +53,6 @@ export class GamesService {
     const  eventTypes = ['penalty', 'extraTime', 'score'];
     return eventTypes[Math.floor(Math.random() * eventTypes.length)];
   }
-
 
   public generateRandomGameUpdate(game: Game): IGameUpdate | void {
     const shouldUpdate = Math.random() < 0.01;
