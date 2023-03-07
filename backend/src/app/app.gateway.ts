@@ -75,7 +75,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect, OnG
   }
 
   /**
-   * sends message to any connected clients
+   * sends a payload to all connected clients
    * @param payload
    * @private
    */
