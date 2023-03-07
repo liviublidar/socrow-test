@@ -41,6 +41,10 @@ export class GamesService {
     }
   }
 
+  /**
+   * removes from games array
+   * @param game
+   */
   public removeGame(game: Game): void {
     this.games = this.games.filter(item => item !== game);
   }

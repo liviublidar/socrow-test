@@ -16,18 +16,32 @@ export class Game {
         this.endTime = this.addGameTime(90)
     }
 
+    /**
+     *
+     */
     public ended(): boolean {
         return new Date() > this.endTime;
     }
 
-    public addGameTime(minutes: number) {
+    /**
+     *
+     * @param minutes
+     */
+    public addGameTime(minutes: number): Date {
         return new Date(this.startTime.getTime() + minutes * 60000);
     }
 
+    /**
+     *
+     * @param newValue
+     */
     public setEndNotified(newValue: boolean): void {
         this.endNotified = newValue;
     }
 
+    /**
+     *
+     */
     public getEndNotified(): boolean {
         return this.endNotified;
     }
@@ -36,7 +50,7 @@ export class Game {
      * increments goal count by 1 for either homeTeam or away team
      * @param homeTeam - if this is true it increments score for homeTeam
      */
-    public markGoal(homeTeam: boolean) {
+    public markGoal(homeTeam: boolean): void {
         if (this.ended()) return
 
         if (homeTeam === true) {
@@ -65,6 +79,9 @@ export class Game {
         return abbr.toUpperCase();
     }
 
+    /**
+     * generates a random start time for a game within given bounds
+     */
     public static getRandomStartTime(): Date {
         const laterOrEarlier = Math.random() < 0.5;
         const randMinutes =  Math.random() * (200);
