@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { IHelloMessage } from "./interfaces/iHelloMessage";
 import { ISocketMessage } from "./interfaces/iSocketMessage";
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import { Socket } from "ngx-socket-io";
 
 
 @Injectable({
@@ -17,14 +18,16 @@ export class AppService {
 
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private socket: Socket
   ) { }
 
   public getHelloMessage(): Observable<IHelloMessage> {
     return <Observable<IHelloMessage>> this.httpClient.get(this.apiUrl)
   }
 
-  public subscribeToLiveScoreData() {
-
+  // listen event
+  onScoreRoomEvent(): Observable<any> {
+    return this.socket.fromEvent('scoreRoom');
   }
 }

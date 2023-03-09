@@ -18,8 +18,12 @@ export class AppComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.appService.getHelloMessage().subscribe((payload) => {
-      //this.helloMessage = payload.message;
+    this.appService.getHelloMessage().subscribe((payload: any) => {
+      this.helloMessage = payload.message;
+    })
+
+    this.appService.onScoreRoomEvent().subscribe((test: any) => {
+      console.log(test)
     })
   }
 
